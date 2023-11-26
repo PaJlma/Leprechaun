@@ -5,6 +5,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { IConfiguration } from "./configuration/configuration.types";
 import { UsersModule } from "./users/users.module";
 import { ServeStaticModule } from "@nestjs/serve-static";
+import { AuthModule } from './auth/auth.module';
 import * as path from "path";
 
 @Module({
@@ -24,6 +25,7 @@ import * as path from "path";
       rootPath: path.resolve(__dirname, "..", "static"),
     }),
     UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
