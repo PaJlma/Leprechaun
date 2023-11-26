@@ -32,7 +32,7 @@ export class SessionsService {
   }
 
   async updateOrCreateIfNotExists(dto: CreateSessionDto): Promise<Session> {
-    if (!(await this.getByUserId(dto.user))) {
+    if (!(await this.getByUserId(dto.user, dto.fingerPrint))) {
       const createdAt = dayjs().utc().format();
       const createdSession = new this.sessionModel({ ...dto, createdAt });
       return createdSession.save();
