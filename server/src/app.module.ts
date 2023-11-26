@@ -6,6 +6,7 @@ import { IConfiguration } from "./configuration/configuration.types";
 import { UsersModule } from "./users/users.module";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { AuthModule } from './auth/auth.module';
+import { SessionsModule } from './sessions/sessions.module';
 import * as path from "path";
 
 @Module({
@@ -26,6 +27,7 @@ import * as path from "path";
     }),
     UsersModule,
     AuthModule,
+    SessionsModule,
   ],
   controllers: [],
   providers: [],
