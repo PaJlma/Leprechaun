@@ -1,5 +1,4 @@
 import { Injectable, InternalServerErrorException } from "@nestjs/common";
-import { User } from "./schemas/user.schema";
 import * as path from "path";
 import * as fse from "fs-extra";
 
