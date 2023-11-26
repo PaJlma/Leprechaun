@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { getConfiguration } from "./configuration/configuration";
 import { MongooseModule } from "@nestjs/mongoose";
 import { IConfiguration } from "./configuration/configuration.types";
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { IConfiguration } from "./configuration/configuration.types";
         uri: configService.get<IConfiguration>("app").mongoUri,
       }),
     }),
+    UsersModule,
   ],
   controllers: [],
   providers: [],
