@@ -8,6 +8,8 @@ import * as utc from "dayjs/plugin/utc";
 import bcrypt from "bcryptjs";
 import { UsersFilesService } from "./usersFiles.service";
 
+dayjs.extend(utc);
+
 @Injectable()
 export class UsersService {
   constructor(
