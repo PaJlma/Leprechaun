@@ -31,6 +31,24 @@ export class SessionsService {
     return createdSession.save();
   }
 
+  async updateOrCreateIfNotExists(dto: CreateSessionDto): Promise<Session> {
+    if (!(await this.getByUserId(dto.user))) {
+      const createdAt = dayjs().utc().format();
+      const createdSession = new this.sessionModel({ ...dto, createdAt });
+      return createdSession.save();
+    }
+
+    return this.sessionModel.findOneAndUpdate(
+      { user: dto.user, fingerPrint: dto.fingerPrint },
+      {
+        $set: {
+          access: dto.access,
+          refresh: dto.refresh,
+        },
+      },
+    );
+  }
+
   async delete(dto: DeleteSessionDto): Promise<Session> {
     return this.sessionModel.findOneAndDelete({ user: dto.user, fingerPrint: dto.fingerPrint }).exec();
   }
