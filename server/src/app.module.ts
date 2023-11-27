@@ -7,6 +7,7 @@ import { UsersModule } from "./users/users.module";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { AuthModule } from './auth/auth.module';
 import { SessionsModule } from './sessions/sessions.module';
+import { VideosModule } from './videos/videos.module';
 import * as path from "path";
 
 @Module({
@@ -28,6 +29,7 @@ import * as path from "path";
     UsersModule,
     AuthModule,
     SessionsModule,
+    VideosModule,
   ],
   controllers: [],
   providers: [],
