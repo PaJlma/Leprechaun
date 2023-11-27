@@ -12,6 +12,7 @@ import { LoginUserDto } from "@/users/dtos/loginUser.dto";
 import { DeleteSessionDto } from "@/sessions/dtos/deleteSession.dto";
 import { RefreshSessionDto } from "@/sessions/dtos/refreshSession.dto";
 import { DeleteUserDto } from "@/users/dtos/deleteUser.dto";
+import { VideosService } from "@/videos/videos.service";
 
 @Injectable()
 export class AuthService {
@@ -19,6 +20,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly usersService: UsersService,
     private readonly sessionsService: SessionsService,
+    private readonly videosService: VideosService,
     private readonly configService: ConfigService,
   ) {}
 
@@ -81,6 +83,7 @@ export class AuthService {
     const user = await this.validateUser(dto.email, dto.password);
     await this.usersService.delete(user["_id"]);
     await this.sessionsService.deleteAllForUser(user["_id"]);
+    await this.videosService.deleteAllForUser(user["_id"]);
   }
 
   // Private Methods
