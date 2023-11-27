@@ -5,7 +5,7 @@ import { Model } from "mongoose";
 import { CreateUserDto } from "./dtos/createUser.dto";
 import * as dayjs from "dayjs";
 import * as utc from "dayjs/plugin/utc";
-import bcrypt from "bcryptjs";
+import * as bcrypt from "bcryptjs";
 import { UsersFilesService } from "./usersFiles.service";
 
 dayjs.extend(utc);
@@ -39,7 +39,7 @@ export class UsersService {
     }
 
     const createdAt = dayjs().utc().format();
-    const hashedPassword = bcrypt.hash(dto.password, 10);
+    const hashedPassword = await bcrypt.hash(dto.password, 10);
     const createdUser = new this.userModel({ ...dto, password: hashedPassword, createdAt });
     const savedUser = await createdUser.save();
     await this.usersFilesService.createPersonalDir(savedUser._id.toString());
