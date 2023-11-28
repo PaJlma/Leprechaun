@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { IsNotEmpty, IsString } from "class-validator";
 
 export class CreateVideoDto {
   @ApiProperty({
@@ -6,6 +7,8 @@ export class CreateVideoDto {
     type: String,
     required: true,
   })
+  @IsNotEmpty()
+  @IsString()
   title: string;
 
   @ApiProperty({
@@ -13,5 +16,7 @@ export class CreateVideoDto {
     type: String,
     required: true,
   })
+  @IsNotEmpty()
+  @IsString()
   author: string;
 }
