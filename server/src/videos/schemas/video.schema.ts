@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import mongoose, { HydratedDocument } from "mongoose";
 import { VideoDuration, VideoDurationSchema } from "./videoDuration.schema";
 import { ApiProperty } from "@nestjs/swagger";
+import { TCategory } from "../types/category.types";
 
 export type VideoDocument = HydratedDocument<Video>;
 
@@ -31,6 +32,13 @@ export class Video {
   })
   @Prop({ required: true })
   createdAt: string;
+
+  @ApiProperty({
+    description: "Категория видео",
+    type: String,
+  })
+  @Prop()
+  category: TCategory;
 
   @ApiProperty({
     description: "Описание видео",

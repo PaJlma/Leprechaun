@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { TCategory } from "../types/category.types";
 
 export class CreateVideoDto {
   @ApiProperty({
@@ -19,4 +20,12 @@ export class CreateVideoDto {
   @IsNotEmpty()
   @IsString()
   author: string;
+
+  @ApiProperty({
+    description: "Категория видео",
+    type: String,
+  })
+  @IsOptional()
+  @IsString()
+  category: TCategory;
 }

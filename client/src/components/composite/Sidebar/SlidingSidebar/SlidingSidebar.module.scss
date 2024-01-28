@@ -1,0 +1,29 @@
+@import "@/scss/blueprints.scss";
+
+.body {
+  z-index: 2;
+    
+  .header {
+    display: flex;
+    padding: 0.65rem 0;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  background-color: var(--background-color);
+  height: 100vh;
+  padding: 0 20px 0 1%;
+  top: 0;
+  position: absolute;
+  @extend %transition-delay;
+}
+
+.active {
+  left: 0;
+  @extend %transition-delay;
+}
+
+.disabled {
+  left: -100%;
+  @extend %transition-delay;
+}

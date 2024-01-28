@@ -1,0 +1,22 @@
+@import "@/scss/blueprints.scss";
+
+.body {
+  width: 77rem;
+  height: 43.3125rem;
+  position: relative;
+
+  .video {
+    width: 77rem;
+    height: 43.3125rem;
+    border-radius: 0.125rem;
+
+    &:hover + .controls {
+      opacity: 1;
+    }
+  }
+
+  .active {
+    opacity: 1;
+    @extend %transition-delay;
+  }
+}

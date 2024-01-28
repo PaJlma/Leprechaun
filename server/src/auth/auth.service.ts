@@ -94,10 +94,14 @@ export class AuthService {
       fingerPrint,
     };
 
-    const { accessSecret, refreshSecret } = this.configService.get<IConfiguration>("app");
+    const { accessSecret, refreshSecret, accessExpires, refreshExpires } =
+      this.configService.get<IConfiguration>("app");
 
-    const access = await this.jwtService.signAsync(accessPayload, { secret: accessSecret, expiresIn: "1m" });
-    const refresh = await this.jwtService.signAsync(refreshPayload, { secret: refreshSecret, expiresIn: "30d" });
+    const access = await this.jwtService.signAsync(accessPayload, { secret: accessSecret, expiresIn: accessExpires });
+    const refresh = await this.jwtService.signAsync(refreshPayload, {
+      secret: refreshSecret,
+      expiresIn: refreshExpires,
+    });
 
     return { access, refresh };
   }

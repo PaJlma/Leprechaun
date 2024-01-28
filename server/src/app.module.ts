@@ -5,9 +5,9 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { IConfiguration } from "./configuration/configuration.types";
 import { UsersModule } from "./users/users.module";
 import { ServeStaticModule } from "@nestjs/serve-static";
-import { AuthModule } from './auth/auth.module';
-import { SessionsModule } from './sessions/sessions.module';
-import { VideosModule } from './videos/videos.module';
+import { AuthModule } from "./auth/auth.module";
+import { SessionsModule } from "./sessions/sessions.module";
+import { VideosModule } from "./videos/videos.module";
 import * as path from "path";
 
 @Module({
@@ -34,4 +34,4 @@ import * as path from "path";
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }

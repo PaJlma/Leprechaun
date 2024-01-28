@@ -1,0 +1,88 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6875rem;
+  width: 19.8864rem;
+  height: fit-content;
+
+  .preview-container {
+    display: flex;
+    position: relative;
+  }
+
+  .preview {
+    width: 19.8864rem;
+    height: 10.901rem;
+    flex: none;
+    border-radius: 0.125rem;
+  }
+
+  .video-duration {
+    position: absolute;
+    bottom: 0.1875rem;
+    right: 0.1875rem;
+    font-size: 0.875rem;
+    padding: 0.125rem 0.3125rem;
+    background-color: #000;
+    color: #fff;
+    opacity: 0.95;
+    border-radius: 0.125rem;
+  }
+
+  .content {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .link-wrapper {
+    flex: none;
+  }
+
+  .avatar {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex: none;
+    border-radius: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .info {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .title {
+    width: 100%;
+    max-height: 2.625rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .channel-name {
+    font-size: 0.875rem;
+  }
+
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer__text {
+    font-size: 0.875rem;
+  }
+
+  .circle {
+    width: 0.25rem;
+    height: 0.25rem;
+    flex: none;
+    border-radius: 100%;
+    background-color: var(--secondary-color);
+  }
+}

@@ -1,0 +1,26 @@
+.body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: none;
+    border-radius: 100%;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .channel-name {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .subscribers-count {
+    font-size: 0.875rem;
+  }
+}

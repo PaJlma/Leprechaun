@@ -1,0 +1,88 @@
+@import "@/scss/blueprints.scss";
+
+.body {
+  padding-bottom: 0.625rem;
+  cursor: pointer;
+
+  &:hover, &:active {
+    .progress::after {
+      width: 0.75rem;
+      height: 0.75rem;
+      @extend %transition-delay;
+    }
+
+    .seek-line {
+      opacity: 1;
+      transition: opacity 100ms;
+    }
+
+    .seek-mark {
+      opacity: 1;
+      transition: opacity 100ms;
+    }
+  }
+
+  .progress-line {
+    position: relative;
+    height: 0.3125rem;
+    background-color: rgba($color: #fff, $alpha: 0.4);
+    border-radius: 0.125rem;
+  }
+
+  .progress {
+    position: absolute;
+    height: 100%;
+    background-color: var(--video-player-progress-line-color);
+    z-index: 1;
+    border-radius: 0.125rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 0.25rem;
+      height: 0.25rem;
+      border-radius: 100%;
+      background-color: var(--video-player-progress-line-color);
+      transform: translateY(-50%);
+      top: 50%;
+      right: 0;
+      @extend %transition-delay;
+    }
+  }
+
+  .seek-line {
+    position: relative;
+    height: 100%;
+    background-color: #bababa;
+    border-radius: 0.125rem;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 100ms;
+  }
+
+  .seek-mark {
+    position: absolute;
+    top: -2.5rem;
+    transform: translateX(-50%);
+    color: #fff;
+    background-color: #000;
+    pointer-events: none;
+    opacity: 0;
+    user-select: none;
+    padding: 0.3125rem;
+    border-radius: 0.125rem;
+    transition: opacity 100ms;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -0.4375rem;
+      width: 0.625rem;
+      height: 0.625rem;
+      transform: rotate(45deg) translateX(-50%);
+      background-color: #000;
+    }
+  }
+}

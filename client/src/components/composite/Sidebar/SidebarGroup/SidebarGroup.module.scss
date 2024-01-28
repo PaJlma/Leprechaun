@@ -1,0 +1,10 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.0625rem;
+
+  .title {
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+}

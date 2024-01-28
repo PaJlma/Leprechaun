@@ -1,0 +1,13 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  
+  .title {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+}

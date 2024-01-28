@@ -1,0 +1,30 @@
+@import "@/scss/blueprints.scss";
+
+.body {
+  width: 10.3125rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  color: var(--background-color);
+  background-color: var(--brand-color);
+  border-radius: 0.125rem;
+  border: 0.0625rem solid var(--brand-color);
+  @extend %transition-delay;
+
+  &:hover {
+    background-color: var(--brand-color-active);
+    border: 0.0625rem solid var(--brand-color);
+    @extend %transition-delay;
+  }
+}
+
+.active {
+  background-color: transparent;
+  color: var(--brand-color);
+  @extend %transition-delay;
+
+  &:hover {
+    color: var(--brand-color-active);
+    border: 0.0625rem solid var(--brand-color-active);
+    @extend %transition-delay;
+  }
+}

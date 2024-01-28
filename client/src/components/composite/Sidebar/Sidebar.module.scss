@@ -1,0 +1,7 @@
+.body {
+  width: var(--sidebar-width);
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 1.4375rem;
+}

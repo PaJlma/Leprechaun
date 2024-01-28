@@ -1,0 +1,82 @@
+@import "@/scss/blueprints.scss";
+
+.body {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  .volume-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      flex: none;
+      * {
+        fill: #fff;
+      }
+    }
+  }
+
+  .volume-line {
+    width: 50px;
+    height: 0.3125rem;
+    position: relative;
+    background-color: rgba($color: #fff, $alpha: 0.4);
+    border-radius: 0.125rem;
+    cursor: pointer;
+
+    &:hover {
+      .volume::after {
+        width: 0.75rem;
+        height: 0.75rem;
+        @extend %transition-delay;
+      }
+
+      .seek-line {
+        opacity: 1;
+        transition: opacity 100ms;
+      }
+    }
+  }
+
+  .volume {
+    position: absolute;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 0.125rem;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 0.25rem;
+      height: 0.25rem;
+      border-radius: 100%;
+      background-color: #fff;
+      transform: translateY(-50%);
+      top: 50%;
+      right: 0;
+      @extend %transition-delay;
+    }
+  }
+
+  .seek-line {
+    position: relative;
+    height: 100%;
+    background-color: #bababa;
+    border-radius: 0.125rem;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 100ms;
+  }
+
+  .percents {
+    font-size: 0.875rem;
+    color: #fff;
+  }
+}

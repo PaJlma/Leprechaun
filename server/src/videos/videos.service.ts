@@ -34,6 +34,25 @@ export class VideosService {
     return preparedVideos;
   }
 
+  async getPreparedVideoById(videoId: string): Promise<IPreparedVideo> {
+    const video = await this.getById(videoId);
+    const author = await this.usersService.getById(video.author);
+
+    return {
+      video,
+      author: {
+        _id: author["_id"],
+        login: author.login,
+        nick: author.nick,
+        channelInfo: author.channelInfo,
+      }
+    }
+  }
+
+  async getById(id: string): Promise<Video> {
+    return this.videoModel.findById(id).exec();
+  }
+
   async create(dto: CreateVideoDto, video: Express.Multer.File, preview: Express.Multer.File): Promise<Video> {
     if (!this.usersService.getById(dto.author)) {
       throw new BadRequestException("Пользователя с таким ID не существует");
@@ -67,6 +86,6 @@ export class VideosService {
 
   async checkUserRights(user: string, videoId: string): Promise<boolean> {
     const video = await this.videoModel.findById(videoId).exec();
-    return user === video.author;
+    return user === video.author.toString();
   }
 }

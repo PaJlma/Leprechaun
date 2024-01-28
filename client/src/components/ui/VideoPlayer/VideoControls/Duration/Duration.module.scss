@@ -1,0 +1,11 @@
+.body {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  
+  .duration {
+    font-size: 0.875rem;
+    color: #fff;
+  }
+}

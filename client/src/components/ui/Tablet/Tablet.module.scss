@@ -1,0 +1,41 @@
+@import "@/scss/blueprints.scss";
+
+%general {
+  height: 2.375rem;
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  padding: 0.6875rem;
+  border-radius: 0.125rem;
+  @extend %transition-delay;
+
+  .text {
+    font-size: 0.875rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  svg {
+    width: 1.375rem;
+    height: 1.375rem;
+    flex: none;
+
+    * {
+      fill: var(--brand-color);
+    }
+  }
+
+  &:hover {
+    background-color: var(--background-color-active);
+    @extend %transition-delay;
+  }
+}
+
+.disabled {
+  @extend %general;
+}
+
+.active {
+  @extend %general;
+  background-color: var(--background-color-active);
+}

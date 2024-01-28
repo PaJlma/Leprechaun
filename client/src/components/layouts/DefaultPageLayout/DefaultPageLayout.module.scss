@@ -1,0 +1,16 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .sidebar-wrapper {
+    background-color: var(--background-color);
+    height: 100%;
+  }
+
+  .content {
+    height: 100%;
+    display: flex;
+    gap: 1.5rem;
+  }
+}

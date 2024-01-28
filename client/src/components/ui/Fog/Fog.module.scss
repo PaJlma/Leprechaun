@@ -1,0 +1,19 @@
+@import "@/scss/blueprints.scss";
+
+.body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0f0f0f;
+  opacity: 0;
+  pointer-events: none;
+  @extend %transition-delay;
+}
+
+.active {
+  opacity: 0.5;
+  pointer-events: all;
+  @extend %transition-delay;
+}

@@ -17,7 +17,6 @@ import { CreateVideoDto } from "./dtos/createVideo.dto";
 import { FileFieldsInterceptor } from "@nestjs/platform-express";
 import { Video } from "./schemas/video.schema";
 import { AuthGuard } from "@/auth/auth.guard";
-import { AuthService } from "@/auth/auth.service";
 import { Request } from "express";
 import { IPreparedVideo } from "./types/preparedVideo.interface";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
@@ -29,12 +28,22 @@ export class VideosController {
 
   @ApiOperation({ summary: "Получение всех видео" })
   @ApiResponse({
-    type: Video,
+    type: [Video],
     status: HttpStatus.OK,
   })
   @Get()
   getPreparedVideos(): Promise<IPreparedVideo[]> {
     return this.videosService.getPreparedVideos();
+  }
+
+  @ApiOperation({ summary: "Получение одного видео по ID" })
+  @ApiResponse({
+    type: Video,
+    status: HttpStatus.OK,
+  })
+  @Get("/:videoId")
+  getById(@Param("videoId") videoId: string): Promise<IPreparedVideo> {
+    return this,this.videosService.getPreparedVideoById(videoId);
   }
 
   @ApiOperation({ summary: "Создание видео" })
@@ -77,6 +86,10 @@ export class VideosController {
   @UseGuards(AuthGuard)
   async delete(@Param("videoId") videoId: string, @Req() request: Request): Promise<Video> {
     const userIdFromReq = request["user"]._id;
+
+    if (!(await this.videosService.getById(videoId))) {
+      throw new BadRequestException("Видео с таким ID не существует");
+    }
 
     if (!(await this.videosService.checkUserRights(userIdFromReq, videoId))) {
       throw new BadRequestException("Вы не имеете право на создание видео под чужим авторством");
